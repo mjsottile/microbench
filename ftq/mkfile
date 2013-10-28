@@ -1,0 +1,25 @@
+</$objtype/mkfile
+
+TARG=ftq15\
+	ftq31\
+	ftq63\
+
+default:V: all
+
+OFILES=getc$objtype.$O
+
+CFLAGS=-DPlan9 -Dobj$objtype
+
+BIN=/$home/bin/$objtype
+</sys/src/cmd/mkmany
+
+getc$objtype.$O: getc$objtype.s
+	$O^a getc$objtype.s
+
+ftq15.$O: getc$objtype.$O ftq.c
+	$O^c -c $CFLAGS -DCORE15 -o ftq15.$O ftq.c
+ftq31.$O: getc$objtype.$O ftq.c
+	$O^c -c $CFLAGS -DCORE31 -o ftq31.$O ftq.c
+ftq63.$O: getc$objtype.$O ftq.c
+	$O^c -c $CFLAGS -DCORE63 -o ftq63.$O ftq.c
+
